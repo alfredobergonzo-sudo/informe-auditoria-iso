@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Auditoría de Calidad ISO 9001:2015</title>
+    <!-- Carga de Tailwind CSS para un diseño moderno y responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Fuente Inter para mejor legibilidad */
+        :root { font-family: 'Inter', sans-serif; }
+        /* Estilos específicos para impresión/exportación a PDF */
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: white; margin: 0; padding: 0; }
+            .container { box-shadow: none !important; border: none !important; }
+            input, textarea, select { border: none !important; background: none !important; padding: 0; margin: 0; }
+            input[type="text"]:focus, textarea:focus { outline: none; }
+            .section-break-avoid { page-break-inside: avoid; }
+            /* Asegura que las imágenes se vean correctamente */
+            .photo-frame img { max-width: 100%; height: auto; }
+        }
+        /* Estilo para los inputs de tabla para que parezcan parte de la celda */
+        .table-input {
+            width: 100%;
+            border: 1px solid #e5e7eb; /* Gris muy claro */
+            padding: 4px;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #ffffff; /* Fondo blanco */
+            transition: all 0.2s;
+        }
+        .table-input:focus {
+            border-color: #10b981; /* Verde esmeralda al enfocar */
+            background-color: #f0fdfa; /* Fondo muy claro al enfocar */
+            box-shadow: 0 0 0 1px #10b981;
+        }
+        /* Estilos de tabla del reporte */
+        .report-table th, .report-table td {
+            border: 1px solid #e5e7eb;
+            padding: 10px 8px; /* Más padding vertical */
+            text-align: left;
+            vertical-align: top;
+        }
+        .report-table th {
+            background-color: #f3f4f6; /* Fondo más claro */
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 p-4 sm:p-10">
+
+    <div class="container max-w-6xl mx-auto bg-white rounded-xl shadow-2xl p-6 sm:p-12 border border-gray-200">
+
+        <!-- TÍTULO, LOGO Y RESUMEN SUPERIOR -->
+        <header class="mb-10 border-b-4 border-teal-500 pb-4 flex justify-between items-start flex-wrap gap-4">
+            <div>
+                <h1 class="text-4xl font-extrabold text-gray-900 mb-1">INFORME DE AUDITORÍA INTERNA DE CALIDAD</h1>
+                <p class="text-xl font-semibold text-teal-600">ISO 9001:2015</p>
+            </div>
+            <div class="text-right bg-teal-50 p-3 rounded-lg shadow-inner">
+                <p class="text-sm font-medium text-gray-700">Ref. Doc: I-AUDIT-2025-Q4</p>
+                <p class="text-xs text-gray-500">Fecha de Emisión: 24/10/2025</p>
+            </div>
+        </header>
+
+        <!-- SECCIÓN 1: DATOS GENERALES DE LA AUDITORÍA -->
+        <section class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md section-break-avoid">
+            <h2 class="text-2xl font-bold mb-5 text-gray-700 border-b pb-2">1. Detalles de la Revisión</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                
+                <!-- Columna 1 -->
+                <div class="space-y-3">
+                    <label class="block"><span class="font-semibold text-gray-600">Empresa Auditada:</span>
+                        <input type="text" value="TecnoGestión Integral, S.L." class="table-input w-full mt-1" required>
+                    </label>
+                    <label class="block"><span class="font-semibold text-gray-600">Alcance:</span>
+                        <input type="text" value="Procesos de Producción y Soporte (RR.HH. y Compras)." class="table-input w-full mt-1">
+                    </label>
+                    <label class="block"><span class="font-semibold text-gray-600">Fecha:</span>
+                        <input type="date" value="2025-10-24" class="table-input w-full mt-1" required>
+                    </label>
+                </div>
+
+                <!-- Columna 2 -->
+                <div class="space-y-3">
+                    <label class="block"><span class="font-semibold text-gray-600">Norma Aplicable:</span>
+                        <input type="text" value="ISO 9001:2015" class="table-input w-full mt-1 font-bold text-teal-700" readonly>
+                    </label>
+                    <label class="block"><span class="font-semibold text-gray-600">Exclusiones (Cláusulas):</span>
+                        <input type="text" value="8.3 Diseño y Desarrollo." class="table-input w-full mt-1">
+                    </label>
+                    <label class="block"><span class="font-semibold text-gray-600">Auditor(a) Líder:</span>
+                        <!-- LÍDER ACTUALIZADO -->
+                        <input type="text" value="Alfredo Bergonzo" class="table-input w-full mt-1 font-semibold">
+                    </label>
+                </div>
+                
+                <!-- Columna 3 -->
+                <div class="space-y-3">
+                     <label class="block"><span class="font-semibold text-gray-600">Procesos Auditados:</span>
+                        <input type="text" value="6. Planificación, 7. Soporte, 8. Operación" class="table-input w-full mt-1">
+                    </label>
+                    <label class="block"><span class="font-semibold text-gray-600">Equipo Auditor:</span>
+                        <input type="text" value="Alfredo Bergonzo (Líder) / Javier Lomas." class="table-input w-full mt-1">
+                    </label>
+                    <label class="block"><span class="font-semibold text-gray-600">Tipo de Auditoría:</span>
+                        <select class="table-input w-full mt-1">
+                            <option selected>Interna</option>
+                            <option>Externa (Certificación)</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mt-5 space-y-3">
+                <label class="block"><span class="font-semibold text-gray-600 block">Objetivo de la Auditoría:</span>
+                    <textarea class="table-input w-full h-12" placeholder="Determinar el cumplimiento del SGC y la Norma ISO 9001.">Verificar si el SGC cumple con los requisitos de la Norma ISO 9001:2015 y evaluar la eficacia de los procesos internos.</textarea>
+                </label>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: RESUMEN DE HALLAZGOS Y FOTOGRAFÍA -->
+        <section class="mb-10 section-break-avoid">
+            <h2 class="text-2xl font-bold mb-5 text-gray-700 border-b pb-2">2. Resultados y Evidencia Rápida</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <!-- Tarjetas de Resumen de Hallazgos -->
+                <div class="bg-red-50 p-4 rounded-lg shadow-lg border-l-4 border-red-600">
+                    <p class="text-sm font-medium text-red-600">No Conformidades (NC)</p>
+                    <p id="total-nc" class="text-3xl font-extrabold text-red-800 mt-1">2</p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg shadow-lg border-l-4 border-blue-600">
+                    <p class="text-sm font-medium text-blue-600">Observaciones (OBS)</p>
+                    <p id="total-obs" class="text-3xl font-extrabold text-blue-800 mt-1">3</p>
+                </div>
+                <div class="bg-teal-50 p-4 rounded-lg shadow-lg border-l-4 border-teal-600">
+                    <p class="text-sm font-medium text-teal-600">Total de Fortalezas</p>
+                    <p class="text-3xl font-extrabold text-teal-800 mt-1">2</p>
+                </div>
+            </div>
+            
+            <!-- NUEVA SECCIÓN PARA FOTOGRAFÍA ADJUNTA -->
+            <div class="p-6 border border-gray-300 rounded-lg shadow-inner bg-white section-break-avoid">
+                <h3 class="text-xl font-semibold mb-3 text-gray-800">2.1. Fotografía de Hallazgo / Evidencia (Opcional)</h3>
+                <div class="photo-frame border-2 border-dashed border-gray-400 p-4 rounded-md text-center h-48 flex flex-col justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-400 mb-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.588-1.588l-5.159 5.159a2.25 2.25 0 0 1-3.182 0L2.25 15.75m11.25-11.25h.008v.008h-.008V4.5Zm0 3.75h.008v.008h-.008V8.25Z" />
+                    </svg>
+                    <p class="text-sm text-gray-500">Espacio para insertar una imagen de la evidencia. En un PDF se vería la foto.</p>
+                    <input type="file" class="mt-2 text-sm text-gray-600 no-print" accept="image/*">
+                </div>
+                <label class="block mt-3">
+                    <span class="text-gray-600 text-sm">Descripción de la Evidencia Visual:</span>
+                    <input type="text" placeholder="Ej. Producto no conforme sin identificación en la zona de embarque (NC 02)." class="table-input w-full mt-1">
+                </label>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: HALLAZGOS Y EVIDENCIAS (NC / OBS) -->
+        <section class="mb-10 section-break-avoid">
+            <h2 class="text-2xl font-bold mb-5 text-gray-700 border-b pb-2">3. Hallazgos Detallados (NC y OBS)</h2>
+            <p class="text-sm text-gray-500 mb-4 no-print">Utiliza los botones para añadir filas. El sistema contará los totales automáticamente.</p>
+
+            <!-- TABLA DE NO CONFORMIDADES (NC) -->
+            <div class="mb-8 section-break-avoid">
+                <h3 class="text-xl font-semibold mb-3 text-red-700">3.1. No Conformidades (NC)</h3>
+                <table class="report-table w-full text-sm">
+                    <thead>
+                        <tr class="bg-red-100">
+                            <th class="w-12">N°</th>
+                            <th class="w-16">Cláusula</th>
+                            <th class="w-20">Escala</th> 
+                            <th class="w-1/4">Descripción NC (Requisito no cumplido)</th>
+                            <th class="w-1/4">Evidencia Objetiva</th>
+                            <th class="w-16 no-print">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="nc-body">
+                        <!-- NCs de ejemplo -->
+                        <tr>
+                            <td><input type="text" value="NC 01" class="table-input text-center"></td>
+                            <td><input type="text" value="6.2.1" class="table-input text-center nc-clausula-input" oninput="updateTotals()"></td>
+                            <td>
+                                <select class="table-input text-sm font-semibold text-red-700">
+                                    <option value="Menor" selected>Menor</option>
+                                    <option value="Mayor">Mayor</option>
+                                </select>
+                            </td>
+                            <td><input type="text" value="Los objetivos de calidad del área Comercial no son medibles ni coherentes con la política de calidad." class="table-input"></td>
+                            <td><input type="text" value="Objetivo de Reducción de Costes sin meta ni plazo definidos." class="table-input"></td>
+                            <td class="text-center no-print">
+                                <button onclick="removeRow(this)" class="text-red-500 hover:text-red-700 p-1 rounded transition duration-150">X</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" value="NC 02" class="table-input text-center"></td>
+                            <td><input type="text" value="8.5.2" class="table-input text-center nc-clausula-input" oninput="updateTotals()"></td>
+                            <td>
+                                <select class="table-input text-sm font-semibold text-red-700">
+                                    <option value="Menor">Menor</option>
+                                    <option value="Mayor" selected>Mayor</option>
+                                </select>
+                            </td>
+                            <td><input type="text" value="El proceso de identificación y trazabilidad del producto no conforme es ineficaz." class="table-input"></td>
+                            <td><input type="text" value="Dos unidades defectuosas entregadas al Cliente B por falta de segregación (Reg. Incidencia N° 45)." class="table-input"></td>
+                            <td class="text-center no-print">
+                                <button onclick="removeRow(this)" class="text-red-500 hover:text-red-700 p-1 rounded transition duration-150">X</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-right mt-3 no-print">
+                    <button onclick="addNCRow()" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-150 text-sm font-semibold shadow-md">
+                        + Añadir NC
+                    </button>
+                </div>
+            </div>
+
+            <!-- TABLA DE OBSERVACIONES (OBS) / OPORTUNIDADES DE MEJORA -->
+            <div class="section-break-avoid">
+                <h3 class="text-xl font-semibold mb-3 text-blue-700">3.2. Observaciones (OBS) y Oportunidades de Mejora</h3>
+                <table class="report-table w-full text-sm">
+                    <thead>
+                        <tr class="bg-blue-100">
+                            <th class="w-16">Cláusula</th>
+                            <th class="w-1/3">Requisito de la Norma</th>
+                            <th>Observación / Oportunidad de Mejora</th>
+                            <th class="w-16 no-print">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="obs-body">
+                        <!-- OBS de ejemplo -->
+                        <tr>
+                            <td><input type="text" value="7.5.3" class="table-input text-center obs-clausula-input" oninput="updateTotals()"></td>
+                            <td><input type="text" value="Información Documentada" class="table-input"></td>
+                            <td><input type="text" value="La versión de la plantilla de Mantenimiento Preventivo (FT-MANT-03) usada en Producción no es la versión aprobada en el servidor." class="table-input"></td>
+                            <td class="text-center no-print">
+                                <button onclick="removeRow(this)" class="text-red-500 hover:text-red-700 p-1 rounded transition duration-150">X</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" value="4.2" class="table-input text-center obs-clausula-input" oninput="updateTotals()"></td>
+                            <td><input type="text" value="Partes Interesadas" class="table-input"></td>
+                            <td><input type="text" value="No se considera a los organismos reguladores locales como parte interesada clave en el análisis de contexto." class="table-input"></td>
+                            <td class="text-center no-print">
+                                <button onclick="removeRow(this)" class="text-red-500 hover:text-red-700 p-1 rounded transition duration-150">X</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" value="9.1.3" class="table-input text-center obs-clausula-input" oninput="updateTotals()"></td>
+                            <td><input type="text" value="Análisis y Evaluación" class="table-input"></td>
+                            <td><input type="text" value="El análisis de datos no incluye la tendencia histórica de quejas/reclamaciones." class="table-input"></td>
+                            <td class="text-center no-print">
+                                <button onclick="removeRow(this)" class="text-red-500 hover:text-red-700 p-1 rounded transition duration-150">X</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-right mt-3 no-print">
+                    <button onclick="addOBSRow()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-150 text-sm font-semibold shadow-md">
+                        + Añadir OBS
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: PLAN DE ACCIÓN CORRECTIVA INICIAL (PAC) -->
+        <section class="mb-10 section-break-avoid">
+            <h2 class="text-2xl font-bold mb-5 text-gray-700 border-b pb-2">4. Plan de Acción Correctiva (PAC) Inicial</h2>
+            <p class="text-sm text-gray-500 mb-4">Propuestas de acciones inmediatas para el cierre de las NC y OBS.</p>
+
+            <table class="report-table w-full text-sm">
+                <thead>
+                    <tr class="bg-indigo-100">
+                        <th class="w-16">Hallazgo</th>
+                        <th class="w-1/4">Acción Correctiva Propuesta</th>
+                        <th class="w-1/4">Responsable</th>
+                        <th class="w-24">Fecha Límite</th>
+                        <th class="w-20">Estado</th>
+                        <th class="w-16 no-print">Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="pac-body">
+                    <!-- Ejemplos de PAC -->
+                    <tr>
+                        <td><input type="text" value="NC 02 (Mayor)" class="table-input text-center font-semibold text-red-700"></td>
+                        <td><input type="text" value="Instalación de barreras físicas y señalización 'Producto No Conforme' en Almacén." class="table-input"></td>
+                        <td><input type="text" value="Responsable de Almacén" class="table-input"></td>
+                        <td><input type="date" value="2025-11-15" class="table-input"></td>
+                        <td><input type="text" value="Pendiente" class="table-input"></td>
+                        <td class="text-center no-print">
+                            <button onclick="removeRow(this)" class="text-red-500 hover:text-red-700 p-1 rounded transition duration-150">X</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value="NC 01 (Menor)" class="table-input text-center text-red-500"></td>
+                        <td><input type="text" value="Revisión y redefinición de Objetivos Comerciales, siguiendo el criterio SMART." class="table-input"></td>
+                        <td><input type="text" value="Dirección Comercial" class="table-input"></td>
+                        <td><input type="date" value="2025-11-30" class="table-input"></td>
+                        <td><input type="text" value="Pendiente" class="table-input"></td>
+                        <td class="text-center no-print">
+                            <button onclick="removeRow(this)" class="text-red-500 hover:text-red-700 p-1 rounded transition duration-150">X</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-right mt-3 no-print">
+                <button onclick="addPACRow()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-150 text-sm font-semibold shadow-md">
+                    + Añadir Acción PAC
+                </button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: CONCLUSIÓN Y FIRMAS -->
+        <section class="section-break-avoid border-t-2 border-gray-100 pt-6">
+            <h2 class="text-2xl font-bold mb-5 text-gray-700 border-b pb-2">5. Conclusión y Aprobación</h2>
+
+            <label class="block mb-6">
+                <span class="font-semibold text-gray-700 block mb-1">Conclusión General del SGC:</span>
+                <textarea class="table-input w-full h-24 font-semibold text-gray-800" placeholder="Se concluye que el Sistema de Gestión de la Calidad...">El SGC es **adecuado y conforme** con la Norma, pero presenta **riesgos de eficacia** en la Operación (Cláusula 8.5.2) y Planificación (Cláusula 6.2.1). Se requiere la implementación rigurosa de las Acciones Correctivas para asegurar la mejora continua y la reducción del riesgo al cliente, tal como se exige en la Revisión por la Dirección (Cláusula 9.3).</textarea>
+            </label>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
+                
+                <!-- 1. Auditor Líder -->
+                <div class="space-y-4 p-3 border rounded-lg">
+                    <p class="font-bold text-teal-700 border-b pb-1">Auditor(a) Líder</p>
+                    <label class="block">
+                        <span class="text-gray-600">Nombre:</span>
+                        <input type="text" value="Alfredo Bergonzo" class="table-input w-full mt-1">
+                    </label>
+                    <label class="block">
+                        <span class="text-gray-600">Firma:</span>
+                        <div class="h-16 border border-gray-300 rounded-md bg-white flex items-center justify-center text-gray-400 italic text-xs">Firma Aquí</div>
+                    </label>
+                </div>
+
+                <!-- 2. Representante del SGC -->
+                <div class="space-y-4 p-3 border rounded-lg">
+                    <p class="font-bold text-gray-700 border-b pb-1">Representante de la Dirección / SGC</p>
+                    <label class="block">
+                        <span class="text-gray-600">Nombre:</span>
+                        <input type="text" value="Luis Álvarez Pérez" class="table-input w-full mt-1">
+                    </label>
+                    <label class="block">
+                        <span class="text-gray-600">Firma:</span>
+                        <div class="h-16 border border-gray-300 rounded-md bg-white flex items-center justify-center text-gray-400 italic text-xs">Firma Aquí</div>
+                    </label>
+                </div>
+
+                <!-- 3. Dirección / Gerencia -->
+                <div class="space-y-4 p-3 border rounded-lg">
+                    <p class="font-bold text-gray-700 border-b pb-1">Dirección / Gerencia General</p>
+                    <label class="block">
+                        <span class="text-gray-600">Nombre:</span>
+                        <input type="text" value="Carmen López García" class="table-input w-full mt-1">
+                    </label>
+                    <label class="block">
+                        <span class="text-gray-600">Firma:</span>
+                        <div class="h-16 border border-gray-300 rounded-md bg-white flex items-center justify-center text-gray-400 italic text-xs">Firma Aquí</div>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- BOTÓN DE ACCIÓN (EXPORTAR / IMPRIMIR) -->
+        <div class="mt-10 pt-4 border-t border-gray-300 text-center no-print">
+            <button onclick="window.print()" class="bg-teal-600 text-white px-8 py-3 rounded-xl shadow-lg hover:bg-teal-700 transition duration-300 font-semibold text-lg">
+                Imprimir / Exportar a PDF
+            </button>
+            <p class="text-xs text-gray-500 mt-2">Utiliza la opción "Guardar como PDF" en el diálogo de impresión de tu navegador.</p>
+        </div>
+
+    </div>
+
+    <script>
+        /**
+         * Función para añadir una nueva fila de No Conformidad (NC) a la tabla.
+         */
+        function addNCRow() {
+            const tableBody = document.getElementById('nc-body');
+            const rowCount = tableBody.rows.length;
+            const newRow = tableBody.insertRow();
+            
+            // Asigna un número de NC automático
+            const ncNumber = 'NC ' + String(rowCount + 1).padStart(2, '0');
+            
+            newRow.innerHTML = `
+                <td><input type="text" value="${ncNumber}" class="table-input text-center"></td>
+                <td><input type="text" value="" placeholder="Ej. 7.1.5" class="table-input text-center nc-clausula-input" oninput="updateTotals()"></td>
+                <td>
+                    <select class="table-input text-sm font-semibold text-red-700">
+                        <option value="Menor" selected>Menor</option>
+                        <option value="Mayor">Mayor</option>
+                    </select>
+                </td>
+                <td><input type="text" value="" placeholder="Describa el incumplimiento del requisito de la Norma." class="table-input"></td>
+                <td><input type="text" value="" placeholder="Evidencia objetiva encontrada (documentos, fotos, registros)." class="table-input"></td>
+                <td class="text-center no-print">
+                    <button onclick="removeRow(this)" class="text-red-500 hover:text-red-700 p-1 rounded transition duration-150">X</button>
+                </td>
+            `;
+            updateTotals();
+        }
+
+        /**
+         * Función para añadir una nueva fila de Observación (OBS) a la tabla.
+         */
+        function addOBSRow() {
+            const tableBody = document.getElementById('obs-body');
+            const newRow = tableBody.insertRow();
+             
+            newRow.innerHTML = `
+                <td><input type="text" value="" placeholder="Ej. 7.1.5" class="table-input text-center obs-clausula-input" oninput="updateTotals()"></td>
+                <td><input type="text" value="" placeholder="Requisito de la Norma o Procedimiento." class="table-input"></td>
+                <td><input type="text" value="" placeholder="Describa la Observación o la Oportunidad de Mejora específica." class="table-input"></td>
+                <td class="text-center no-print">
+                    <button onclick="removeRow(this)" class="text-red-500 hover:text-red-700 p-1 rounded transition duration-150">X</button>
+                </td>
+            `;
+            updateTotals();
+        }
+
+        /**
+         * Función para añadir una nueva fila al Plan de Acción Correctiva (PAC).
+         */
+        function addPACRow() {
+            const tableBody = document.getElementById('pac-body');
+            const newRow = tableBody.insertRow();
+            
+            newRow.innerHTML = `
+                <td><input type="text" value="NC/OBS N°" class="table-input text-center text-red-500"></td>
+                <td><input type="text" value="" placeholder="Detalle la acción propuesta y su enfoque." class="table-input"></td>
+                <td><input type="text" value="" placeholder="Área o Persona" class="table-input"></td>
+                <td><input type="date" value="" class="table-input"></td>
+                <td><input type="text" value="Pendiente" class="table-input"></td>
+                <td class="text-center no-print">
+                    <button onclick="removeRow(this)" class="text-red-500 hover:text-red-700 p-1 rounded transition duration-150">X</button>
+                </td>
+            `;
+        }
+
+        /**
+         * Función genérica para eliminar una fila de cualquier tabla y actualizar totales.
+         * @param {HTMLElement} button - El botón que se ha pulsado.
+         */
+        function removeRow(button) {
+            const row = button.closest('tr');
+            row.remove();
+            updateTotals();
+        }
+
+        /**
+         * Función para actualizar los contadores de NC y OBS y re-enumerar NCs.
+         */
+        function updateTotals() {
+            const ncBody = document.getElementById('nc-body');
+            const obsBody = document.getElementById('obs-body');
+            
+            const ncCount = ncBody.rows.length;
+            const obsCount = obsBody.rows.length;
+
+            document.getElementById('total-nc').textContent = ncCount;
+            document.getElementById('total-obs').textContent = obsCount;
+
+            // Re-numerar las NCs para mantener la secuencia (columna 1)
+            const ncRows = ncBody.rows;
+            for (let i = 0; i < ncRows.length; i++) {
+                const ncNumber = 'NC ' + String(i + 1).padStart(2, '0');
+                const ncInput = ncRows[i].cells[0].querySelector('.table-input');
+                if (ncInput) ncInput.value = ncNumber;
+            }
+        }
+
+        // Inicializa el cálculo de totales al cargar
+        document.addEventListener('DOMContentLoaded', updateTotals);
+    </script>
+</body>
+</html>
